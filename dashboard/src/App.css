@@ -1,0 +1,111 @@
+/* .App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: rgb(39, 36, 36);
+  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+}
+
+.auth-form-container,
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+  padding: 5rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 0.5rem;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7439db;
+}
+
+.link-btn {
+  background: none;
+  color: rgb(72, 15, 15);
+  text-decoration: underline;
+} */
+
+body {
+  font-family: Arial, sans-serif;
+  /* background-color: #f4f4f4; */
+  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-left: 5px solid blue;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task h2 {
+  font-size: 18px;
+  color: #222;
+}
+
+.task p {
+  font-size: 14px;
+  color: #555;
+}
+
+button {
+  background: rgb(141, 8, 141);
+  color: white;
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(77, 4, 73);
+}
+
+.mb-4 {
+  margin: 10px;
+}
