@@ -12,38 +12,33 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const currentUser = localStorage.getItem("currentUser"); // Get logged-in user
-    if (!currentUser) {
-      navigate("/login");
-      return;
-    }
-
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     console.log("Loaded tasks from localStorage:", savedTasks);
     setTasks(savedTasks);
-  }, []);
+  }, [navigate]);
 
   // const handleTaskClick = (taskId) => {
   //   navigate(`/task-details/${taskId}`);
   // };
 
-  // const handleAddNewTask = () => {
-  //   navigate("/task-details");
-  // };
-
-  // const handleComplete = (taskId) => {
-  //   const updatedTasks = tasks.map((task) =>
-  //     task.id === taskId ? { ...task, status: "Completed" } : task
-  //   );
-
-  const handleAddTask = () => {
-    const currentUser = localStorage.getItem("currentUser");
-    if (!currentUser) return;
-
-    const updatedTasks = [...tasks, { ...newTask, id: tasks.length + 1 }];
-    setTasks(updatedTasks);
-    localStorage.setItem("tasks_${currentUser}", JSON.stringify(updatedTasks));
+  const handleAddNewTask = () => {
+    navigate("/task-details");
   };
+
+  const handleComplete = (taskId) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, status: "Completed" } : task
+    );
+  };
+
+  // const handleAddTask = () => {
+  //   const currentUser = localStorage.getItem("currentUser");
+  //   if (!currentUser) return;
+
+  //   const updatedTasks = [...tasks, { ...newTask, id: tasks.length + 1 }];
+  //   setTasks(updatedTasks);
+  //   localStorage.setItem("tasks_${currentUser}", JSON.stringify(updatedTasks));
+  // };
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -56,21 +51,13 @@ const Dashboard = () => {
   //   navigate("/login"); // Redirect to login page
   // };
 
-  // const handleTaskClick = (taskId) => {
-  //   console.log("Clicked Task ID:", taskId);
-  //   navigate(`/task-details/${task.id}`);
-  // };
-
   const filteredTasks =
     filter === "All" ? tasks : tasks.filter((task) => task.status === filter);
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-4">
         <h1 className="box">Dashboard</h1>
-        <Button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded"
-        >
+        <Button onClick={handleLogout} className="rounded">
           Logout
         </Button>
       </div>
@@ -84,7 +71,7 @@ const Dashboard = () => {
         </Select>
       </div>
 
-      <Button onClick={handleAddTask} className="box">
+      <Button onClick={handleAddNewTask} className="box">
         Add New Task
       </Button>
 
@@ -111,7 +98,7 @@ const Dashboard = () => {
 
               {task.status !== "Completed" && (
                 <Button
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="bg-green-500 text-white px-4 py-2"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleComplete(task.id);

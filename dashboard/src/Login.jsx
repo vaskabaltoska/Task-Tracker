@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import "./index.css";
@@ -8,7 +8,36 @@ import "./index.css";
 //   const [pass, setPass] = useState("");
 //   const navigate = useNavigate();
 
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await fetch("http://localhost:5176/api/login", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ email, password: pass }),
+//       });
+
+//       if (!response.ok) {
+//         throw new Error(data.message || "Invalid credentials");
+//       }
+
+//       const data = await response.json();
+//       localStorage.setItem("authToken", data.token);
+//       console.log("Login successful! Navigating to dashboard...");
+
+//       alert("Login successful!");
+
+//       navigate("/dashboard");
+//     } catch (error) {
+//       console.error("Error:", error);
+//       alert("Invalid credentials. Please try again.");
+//     }
+//   };
+
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,32 +47,6 @@ const Login = () => {
       navigate("/dashboard");
     }
   }, []);
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await fetch("http://localhost:5176/api/login", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ email, password: pass }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error(data.message || "Invalid credentials");
-  //     }
-
-  //     const data = await response.json();
-  //     localStorage.setItem("authToken", data.token);
-  //     console.log("Login successful! Navigating to dashboard...");
-
-  //     alert("Login successful!");
-
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     alert("Invalid credentials. Please try again.");
-  //   }
-  // };
 
   const handleLogin = async () => {
     try {
@@ -63,7 +66,7 @@ const Login = () => {
       console.log("Login successful! Navigating to dashboard...");
       alert("Login successful!");
 
-      navigate("/dashboard"); // This should still work, but `useEffect` ensures fallback
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error:", error);
       alert("Invalid credentials. Please try again.");
@@ -73,7 +76,7 @@ const Login = () => {
   return (
     <div className="auth-form-container">
       <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleLogin}>
         <label htmlFor="email">Email</label>
         <input
           value={email}
@@ -96,7 +99,7 @@ const Login = () => {
 
         <button
           onClick={handleLogin}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 text-white px-4 py-2"
         >
           Login
         </button>
