@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const app = express();
-const PORT = 5176;
+const PORT = process.env.PORT || 5176;
 const SECRET_KEY = process.env.SECRET_KEY || "your_secret_key";
 
 app.use(express.json());
@@ -65,4 +65,6 @@ app.get("/api/dashboard", (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
