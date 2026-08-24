@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./TaskDetailsPage.css";
 
 const TaskDetailsPage = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const TaskDetailsPage = () => {
 
   const handleSaveTask = (taskId) => {
     const updatedTasks = tasks.map((task) =>
-      task.id === taskId ? { ...task } : task
+      task.id === taskId ? { ...task } : task,
     );
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
@@ -57,7 +58,7 @@ const TaskDetailsPage = () => {
   };
 
   const filteredTasks = tasks.filter((task) =>
-    filterDate ? task.dueDate === filterDate : true
+    filterDate ? task.dueDate === filterDate : true,
   );
   const sortedTasks =
     sortStatus === "All"
@@ -65,16 +66,19 @@ const TaskDetailsPage = () => {
       : filteredTasks.filter((task) => task.status === sortStatus);
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold">Task Details</h1>
-      <div>
+    <div className="task-details-page">
+      <h1 className="task-details-title">Task Details</h1>
+      <div className="task-filters">
         <label>Filter by Date:</label>
+
         <input
           type="date"
           value={filterDate}
           onChange={(e) => setFilterDate(e.target.value)}
         />
+
         <label>Sort by Status:</label>
+
         <select
           value={sortStatus}
           onChange={(e) => setSortStatus(e.target.value)}
@@ -85,27 +89,31 @@ const TaskDetailsPage = () => {
           <option value="Completed">Completed</option>
         </select>
       </div>
-      <div>
+      <div className="add-task-section">
         <h2>Add New Task</h2>
         <input
+          className="task-input"
           type="text"
           placeholder="Title"
           value={newTask.title}
           onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
         />
         <textarea
+          className="task-input task-textarea"
           placeholder="Description"
           value={newTask.description}
           onChange={(e) =>
             setNewTask({ ...newTask, description: e.target.value })
           }
-        ></textarea>
+        />
         <input
+          className="task-input"
           type="date"
           value={newTask.dueDate}
           onChange={(e) => setNewTask({ ...newTask, dueDate: e.target.value })}
         />
         <select
+          className="task-input"
           value={newTask.status}
           onChange={(e) => setNewTask({ ...newTask, status: e.target.value })}
         >
@@ -113,20 +121,22 @@ const TaskDetailsPage = () => {
           <option value="In Progress">In Progress</option>
           <option value="Completed">Completed</option>
         </select>
-        <button onClick={handleAddTask}>Add Task</button>
+        <button className="add-task-button" onClick={handleAddTask}>
+          Add Task
+        </button>
       </div>
-      <div>
+      <div className="all-tasks-section">
         <h2>All Tasks</h2>
         {sortedTasks.map((task) => (
-          <div key={task.id}>
+          <div key={task.id} className="task-item">
             <input
               type="text"
               value={task.title}
               onChange={(e) =>
                 setTasks(
                   tasks.map((t) =>
-                    t.id === task.id ? { ...t, title: e.target.value } : t
-                  )
+                    t.id === task.id ? { ...t, title: e.target.value } : t,
+                  ),
                 )
               }
             />
@@ -135,8 +145,10 @@ const TaskDetailsPage = () => {
               onChange={(e) =>
                 setTasks(
                   tasks.map((t) =>
-                    t.id === task.id ? { ...t, description: e.target.value } : t
-                  )
+                    t.id === task.id
+                      ? { ...t, description: e.target.value }
+                      : t,
+                  ),
                 )
               }
             ></textarea>
@@ -146,8 +158,8 @@ const TaskDetailsPage = () => {
               onChange={(e) =>
                 setTasks(
                   tasks.map((t) =>
-                    t.id === task.id ? { ...t, dueDate: e.target.value } : t
-                  )
+                    t.id === task.id ? { ...t, dueDate: e.target.value } : t,
+                  ),
                 )
               }
             />
@@ -156,8 +168,8 @@ const TaskDetailsPage = () => {
               onChange={(e) =>
                 setTasks(
                   tasks.map((t) =>
-                    t.id === task.id ? { ...t, status: e.target.value } : t
-                  )
+                    t.id === task.id ? { ...t, status: e.target.value } : t,
+                  ),
                 )
               }
             >
@@ -165,12 +177,25 @@ const TaskDetailsPage = () => {
               <option value="In Progress">In Progress</option>
               <option value="Completed">Completed</option>
             </select>
-            <button onClick={() => handleSaveTask(task.id)}>Save</button>
-            <button onClick={() => handleDelete(task.id)}>Delete</button>
+            <button
+              className="save-button"
+              onClick={() => handleSaveTask(task.id)}
+            >
+              Save
+            </button>
+
+            <button
+              className="delete-button"
+              onClick={() => handleDelete(task.id)}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
-      <button onClick={() => navigate("/dashboard")}>Back to Dashboard</button>
+      <button className="back-button" onClick={() => navigate("/dashboard")}>
+        Back to Dashboard
+      </button>
     </div>
   );
 };

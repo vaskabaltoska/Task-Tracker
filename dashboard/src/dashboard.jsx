@@ -5,6 +5,7 @@ import { Select, SelectItem } from "./components/select";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import "./index.css";
+import "./dashboard.css";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,10 +18,6 @@ const Dashboard = () => {
     setTasks(savedTasks);
   }, [navigate]);
 
-  // const handleTaskClick = (taskId) => {
-  //   navigate(`/task-details/${taskId}`);
-  // };
-
   const handleAddNewTask = () => {
     navigate("/task-details");
   };
@@ -31,25 +28,11 @@ const Dashboard = () => {
     );
   };
 
-  // const handleAddTask = () => {
-  //   const currentUser = localStorage.getItem("currentUser");
-  //   if (!currentUser) return;
-
-  //   const updatedTasks = [...tasks, { ...newTask, id: tasks.length + 1 }];
-  //   setTasks(updatedTasks);
-  //   localStorage.setItem("tasks_${currentUser}", JSON.stringify(updatedTasks));
-  // };
-
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("currentUser"); // Clear current user info
     navigate("/login");
   };
-
-  // const handleLogout = () => {
-  //   localStorage.removeItem("authToken"); // Remove token
-  //   navigate("/login"); // Redirect to login page
-  // };
 
   const filteredTasks =
     filter === "All" ? tasks : tasks.filter((task) => task.status === filter);

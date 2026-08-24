@@ -79,34 +79,48 @@ const Login = () => {
   };
 
   return (
-    <div className="form-row">
-      <div className="form-group">
-        <label htmlFor="email">Email</label>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          placeholder="Email"
-          id="email"
-          name="email"
-        />
-      </div>
+    <div className="login-page">
+      <div className="login-box">
+        <h1>Login</h1>
 
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-          type="password"
-          placeholder="Password"
-          id="password"
-          name="password"
-        />
-      </div>
+        <div className="login-form">
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Email"
+              id="email"
+              name="email"
+            />
+          </div>
 
-      <button type="button" onClick={handleLogin}>
-        Login
-      </button>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
+              type="password"
+              placeholder="Password"
+              id="password"
+              name="password"
+            />
+          </div>
+
+          <button type="button" className="login-btn" onClick={handleLogin}>
+            Login
+          </button>
+        </div>
+
+        <button
+          type="button"
+          className="register-btn"
+          onClick={() => navigate("/register")}
+        >
+          Don't have an account? Register here
+        </button>
+      </div>
     </div>
   );
 };

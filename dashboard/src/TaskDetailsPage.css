@@ -1,0 +1,253 @@
+/* =========================
+   TASK DETAILS PAGE
+========================= */
+
+.task-details-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(120deg, #7439db, #c66fbc 50%, #f7944d);
+  box-sizing: border-box;
+}
+
+.task-details-page h1 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.task-details-page h2 {
+  color: white;
+  font-size: 24px;
+  margin: 30px 0 15px;
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.task-filters {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.task-filters label {
+  color: white;
+  font-weight: 600;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.task-details-page input,
+.task-details-page textarea,
+.task-details-page select {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid #6f2dbd;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.task-details-page textarea {
+  padding: 12px 14px;
+  height: 44px;
+  min-height: 44px;
+  resize: none;
+  box-sizing: border-box;
+}
+.task-details-page input:focus,
+.task-details-page textarea:focus,
+.task-details-page select:focus {
+  border-color: #7b2cbf;
+  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.2);
+}
+
+/* =========================
+   ADD TASK FORM
+========================= */
+
+.add-task-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.add-task-form input,
+.add-task-form textarea,
+.add-task-form select {
+  min-height: 44px;
+}
+
+/* =========================
+   ALL TASKS
+========================= */
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.task-details-page button {
+  min-height: 44px;
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #7b2cbf;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.task-details-page button:hover {
+  background: #6420a5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.task-details-page button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   DELETE
+========================= */
+
+.task-details-page .delete-btn {
+  background: #dc3545;
+}
+
+.task-details-page .delete-btn:hover {
+  background: #b02a37;
+}
+
+/* =========================
+   SAVE
+========================= */
+
+.task-details-page .save-btn {
+  background: #22c55e;
+}
+
+.task-details-page .save-btn:hover {
+  background: #16a34a;
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.task-details-page .back-btn {
+  margin-top: 20px;
+  background: white;
+  color: #7b2cbf;
+  border: 2px solid #7b2cbf;
+}
+
+.task-details-page .back-btn:hover {
+  background: #7b2cbf;
+  color: white;
+}
+
+/* =========================
+   SELECT
+========================= */
+
+.task-details-page select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.task-details-page select option {
+  background: white;
+  color: #333;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .task-details-page {
+    padding: 20px;
+  }
+
+  .task-filters,
+  .add-task-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-details-page input,
+  .task-details-page textarea,
+  .task-details-page select,
+  .task-details-page button {
+    width: 100%;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* Align Description with the other fields */
+.add-task-section {
+  align-items: center;
+}
+
+.add-task-section textarea {
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  padding: 0 14px;
+  resize: none;
+  box-sizing: border-box;
+  line-height: 44px;
+  overflow: hidden;
+}
+
+/* Description in existing tasks */
+.task-item textarea {
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  padding: 0 14px;
+  resize: none;
+  box-sizing: border-box;
+  line-height: 44px;
+  overflow: hidden;
+}
