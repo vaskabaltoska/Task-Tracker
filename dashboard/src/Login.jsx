@@ -79,9 +79,8 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-form-container">
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={handleLogin}>
+    <div className="form-row">
+      <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
           value={email}
@@ -91,6 +90,9 @@ const Login = () => {
           id="email"
           name="email"
         />
+      </div>
+
+      <div className="form-group">
         <label htmlFor="password">Password</label>
         <input
           value={pass}
@@ -100,14 +102,10 @@ const Login = () => {
           id="password"
           name="password"
         />
-        {/* <button type="submit">Login</button> */}
+      </div>
 
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2">
-          Login
-        </button>
-      </form>
-      <button className="link-btn" onClick={() => navigate("/register")}>
-        Don't have an account? Register here
+      <button type="button" onClick={handleLogin}>
+        Login
       </button>
     </div>
   );

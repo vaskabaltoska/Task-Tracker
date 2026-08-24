@@ -1,111 +1,209 @@
-/* .App {
-  text-align: center;
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  color: rgb(39, 36, 36);
-  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+* {
+  box-sizing: border-box;
 }
-
-.auth-form-container,
-.login-form,
-.register-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.auth-form-container {
-  padding: 5rem;
-  border: 1px solid white;
-  border-radius: 10px;
-  margin: 0.5rem;
-}
-
-label {
-  text-align: left;
-  padding: 0.25rem 0;
-}
-
-input {
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border: none;
-  border-radius: 10px;
-}
-
-button {
-  border: none;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  color: #7439db;
-}
-
-.link-btn {
-  background: none;
-  color: rgb(72, 15, 15);
-  text-decoration: underline;
-} */
 
 body {
-  font-family: Arial, sans-serif;
-  /* background-color: #f4f4f4; */
-  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
   margin: 0;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+
+  background: linear-gradient(120deg, #7439db, #c66fbc 50%, #f7944d);
 }
 
-h1 {
+/* =========================
+   AUTH CONTAINER
+========================= */
+
+.auth-form-container {
+  width: 90%;
+  max-width: 850px;
+  margin: 80px auto;
+  padding: 45px 50px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.auth-form-container h2 {
   text-align: center;
-  font-size: 24px;
+  margin-bottom: 35px;
+  font-size: 32px;
   color: #333;
 }
 
-.container {
-  display: flex;
-  max-width: 900px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* =========================
+   LOGIN / REGISTER FORM
+========================= */
+
+.login-form,
+.register-form {
+  width: 100%;
 }
+
+.login-form label,
+.register-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.login-form input:focus,
+.register-form input:focus {
+  border-color: #8b3fd1;
+  box-shadow: 0 0 0 3px rgba(139, 63, 209, 0.12);
+}
+
+/* =========================
+   INPUT ROW
+========================= */
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.form-group {
+  flex: 1;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.login-form button,
+.register-form button {
+  height: 52px;
+
+  padding: 0 30px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #7b2cbf, #a100a8);
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.login-form button:hover,
+.register-form button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(123, 44, 191, 0.3);
+}
+
+/* =========================
+   REGISTER LINK
+========================= */
+
+.link-btn {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #f1e8f8;
+
+  color: #7b2cbf;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.link-btn:hover {
+  background: #e4d2f2;
+}
+
+/* =========================
+   TASKS
+========================= */
 
 .task {
   background: #fff;
-  padding: 15px;
-  margin: 10px 0;
-  border-left: 5px solid blue;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+  padding: 20px;
+
+  margin: 15px 0;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .task h2 {
-  font-size: 18px;
+  font-size: 20px;
   color: #222;
 }
 
 .task p {
-  font-size: 14px;
+  font-size: 15px;
   color: #555;
 }
 
+/* =========================
+   GENERAL BUTTON
+========================= */
+
 button {
-  background: rgb(141, 8, 141);
-  color: white;
-  margin: 5px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
-  background: rgb(77, 4, 73);
-}
+/* =========================
+   MOBILE
+========================= */
 
-.mb-4 {
-  margin: 10px;
+@media (max-width: 700px) {
+  .auth-form-container {
+    width: 94%;
+    margin: 30px auto;
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .login-form button,
+  .register-form button {
+    width: 100%;
+  }
 }

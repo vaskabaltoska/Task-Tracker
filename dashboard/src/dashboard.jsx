@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const handleComplete = (taskId) => {
     const updatedTasks = tasks.map((task) =>
-      task.id === taskId ? { ...task, status: "Completed" } : task
+      task.id === taskId ? { ...task, status: "Completed" } : task,
     );
   };
 
@@ -54,43 +54,53 @@ const Dashboard = () => {
   const filteredTasks =
     filter === "All" ? tasks : tasks.filter((task) => task.status === filter);
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="box">Dashboard</h1>
-        <Button onClick={handleLogout} className="rounded">
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Dashboard</h1>
+
+        <Button onClick={handleLogout} className="dashboard-btn logout-btn">
           Logout
         </Button>
       </div>
 
-      <div className="mb-4">
-        <Select value={filter} onChange={(e) => setFilter(e.target.value)}>
+      <div className="dashboard-controls">
+        <Select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="dashboard-filter"
+        >
           <SelectItem value="All">All</SelectItem>
           <SelectItem value="To Do">To Do</SelectItem>
           <SelectItem value="In Progress">In Progress</SelectItem>
           <SelectItem value="Completed">Completed</SelectItem>
         </Select>
+
+        <Button
+          onClick={handleAddNewTask}
+          className="dashboard-btn add-task-btn"
+        >
+          + Add New Task
+        </Button>
       </div>
 
-      <Button onClick={handleAddNewTask} className="box">
-        Add New Task
-      </Button>
-
-      <div className="bg-gray-200 p-4">
+      <div className="tasks-container">
         {filteredTasks.map((task) => (
-          <Card key={task.id} className="items-center">
-            <CardContent className="w-full">
-              <h2 className="box">{task.title}</h2>
-              <p>{task.description}</p>
-              <p className="text-sm">
+          <Card key={task.id} className="task-card">
+            <CardContent className="task-info">
+              <h2 className="task-title">{task.title}</h2>
+
+              <p className="task-description">{task.description}</p>
+
+              <p className="task-details">
                 Priority: {task.priority} | Due: {task.dueDate}
               </p>
             </CardContent>
-            <div className="flex gap-2">
+            <div className="task-actions">
               <Button
-                className="rounded"
+                className="dashboard-btn change-task-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/task-details`);
+                  navigate("/task-details");
                 }}
               >
                 Change Task
@@ -98,7 +108,7 @@ const Dashboard = () => {
 
               {task.status !== "Completed" && (
                 <Button
-                  className="bg-green-500 text-white px-4 py-2"
+                  className="dashboard-btn complete-task-btn"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleComplete(task.id);
