@@ -71,7 +71,7 @@ const Login = () => {
       console.log("Login successful! Navigating to dashboard...");
       alert("Login successful!");
 
-      navigate("/dashboard");
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error:", error);
       alert("Invalid credentials. Please try again.");
