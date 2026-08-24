@@ -50,11 +50,14 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:5176/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password: pass }),
-      });
+      const response = await fetch(
+        "https://task-tracker-qn6h.onrender.com/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password: pass }),
+        },
+      );
 
       if (!response.ok) {
         throw new Error("Invalid credentials");

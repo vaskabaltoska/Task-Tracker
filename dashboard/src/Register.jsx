@@ -12,11 +12,14 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5176/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password: pass }),
-      });
+      const response = await fetch(
+        "https://task-tracker-qn6h.onrender.com/api/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password: pass }),
+        },
+      );
 
       if (!response.ok) {
         throw new Error("Registration failed");
