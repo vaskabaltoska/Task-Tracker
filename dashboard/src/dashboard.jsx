@@ -26,6 +26,9 @@ const Dashboard = () => {
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, status: "Completed" } : task,
     );
+
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const handleLogout = () => {
@@ -83,7 +86,7 @@ const Dashboard = () => {
                 className="dashboard-btn change-task-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate("/task-details");
+                  navigate(`/task-details?id=${task.id}`);
                 }}
               >
                 Change Task

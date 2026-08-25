@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./TaskDetailsPage.css";
 
 const TaskDetailsPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const editTaskId = searchParams.get("id");
   const [tasks, setTasks] = useState([]);
   const [filterDate, setFilterDate] = useState("");
   const [sortStatus, setSortStatus] = useState("All");
@@ -19,7 +21,17 @@ const TaskDetailsPage = () => {
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     setTasks(storedTasks);
-  }, []);
+
+    if (editTaskId) {
+      const taskToEdit = storedTasks.find(
+        (task) => String(task.id) === String(editTaskId),
+      );
+
+      if (taskToEdit) {
+        setNewTask(taskToEdit);
+      }
+    }
+  }, [editTaskId]);
 
   const handleSaveTask = (taskId) => {
     const updatedTasks = tasks.map((task) =>
@@ -57,9 +69,15 @@ const TaskDetailsPage = () => {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
-  const filteredTasks = tasks.filter((task) =>
-    filterDate ? task.dueDate === filterDate : true,
-  );
+  const filteredTasks = tasks.filter((task) => {
+    const matchesDate = filterDate ? task.dueDate === filterDate : true;
+
+    const matchesEditTask = editTaskId
+      ? String(task.id) === String(editTaskId)
+      : true;
+
+    return matchesDate && matchesEditTask;
+  });
   const sortedTasks =
     sortStatus === "All"
       ? filteredTasks
@@ -165,13 +183,14 @@ const TaskDetailsPage = () => {
             />
             <select
               value={task.status}
-              onChange={(e) =>
-                setTasks(
-                  tasks.map((t) =>
-                    t.id === task.id ? { ...t, status: e.target.value } : t,
-                  ),
-                )
-              }
+              onChange={(e) => {
+                const updatedTasks = tasks.map((t) =>
+                  t.id === task.id ? { ...t, status: e.target.value } : t,
+                );
+
+                setTasks(updatedTasks);
+                localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+              }}
             >
               <option value="To Do">To Do</option>
               <option value="In Progress">In Progress</option>

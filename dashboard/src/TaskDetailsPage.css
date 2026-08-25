@@ -233,6 +233,7 @@
   height: 44px;
   min-height: 44px;
   max-height: 44px;
+
   padding: 0 14px;
   resize: none;
   box-sizing: border-box;
@@ -244,10 +245,105 @@
 .task-item textarea {
   height: 44px;
   min-height: 44px;
-  max-height: 44px;
+  width: 220px;
+  flex: 0 0 220px;
   padding: 0 14px;
   resize: none;
   box-sizing: border-box;
   line-height: 44px;
   overflow: hidden;
+}
+/* =========================
+   TASK ROW
+   ========================= */
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #ffffff;
+  border-radius: 14px;
+
+  box-sizing: border-box;
+}
+
+/* All fields inside a task */
+
+.task-item input,
+.task-item textarea,
+.task-item select {
+  border: 2px solid #7b2cbf;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* Title */
+
+.task-item input[type="text"] {
+  width: 230px;
+  height: 48px;
+  padding: 0 14px;
+}
+
+/* Description */
+
+.task-item textarea {
+  width: 250px;
+  height: 48px;
+  padding: 12px 14px;
+
+  resize: none;
+  line-height: normal;
+}
+
+/* Date */
+
+.task-item input[type="date"] {
+  width: 170px;
+  height: 48px;
+  padding: 0 12px;
+}
+
+/* Status */
+
+.task-item select {
+  width: 145px;
+  height: 48px;
+  padding: 0 12px;
+}
+
+/* Buttons */
+
+.task-item button {
+  height: 48px;
+  padding: 0 22px;
+
+  border: 2px solid #7b2cbf;
+  border-radius: 10px;
+
+  background: #7b2cbf;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* Button hover */
+
+.task-item button:hover {
+  background: #5a189a;
+}
+
+/* Space between Save and Delete */
+
+.task-item button + button {
+  margin-left: 4px;
 }
